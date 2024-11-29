@@ -8,7 +8,6 @@
 #### libraries ####
 # remember to install packages first if not already installed
 library(tidyverse)
-library(dplyr)
 library(janitor)
 library(showtext)
 library(scales)
@@ -86,7 +85,7 @@ csat_score <- lapply(filtered_csat, function(csat) {
   if (is.data.frame(csat)) {  # Ensure each item is a dataframe
     csat %>%
       summarize(
-        count = sum(value %in% c(4.0, 4.3, 5.0), na.rm = TRUE),  # Handle NA values
+        count = sum(value %in% c(4.0, 4.3, 5.0), na.rm = TRUE),  # handle NA values
         total = n()
       ) %>%
       mutate(csat = count / total)
@@ -104,7 +103,7 @@ csat <- csat %>%
 
 # update the factor levels to include all values, even those with no observations
 csat <- csat %>%
-  mutate(value = factor(value, levels = c(1, 2, 3, 4, 5)))  # Ensure all levels are included
+  mutate(value = factor(value, levels = c(1, 2, 3, 4, 5)))  # ensure all levels are included
 
 # include zero counts
 csat_summary <- csat %>%
@@ -245,7 +244,7 @@ csat_acct <- csat_acct %>%
 
 # update the factor levels to include all values, even those with no observations
 csat_acct <- csat_acct %>%
-  mutate(value = factor(value, levels = c(1, 2, 3, 4, 5)))  # Ensure all levels are included
+  mutate(value = factor(value, levels = c(1, 2, 3, 4, 5)))  # ensure all levels are included
 
 # include zero counts
 csat_summary_acct <- csat_acct %>%
@@ -313,7 +312,7 @@ csat_ga <- csat_ga %>%
 
 # update the factor levels to include all values, even those with no observations
 csat_ga <- csat_ga %>%
-  mutate(value = factor(value, levels = c(1, 2, 3, 4, 5)))  # Ensure all levels are included
+  mutate(value = factor(value, levels = c(1, 2, 3, 4, 5)))  # ensure all levels are included
 
 # include zero counts
 csat_summary_ga <- csat_ga %>%
@@ -741,7 +740,7 @@ likert_score <- lapply(filtered_likert, function(likert) {
   if (is.data.frame(likert)) {  # Ensure each item is a dataframe
     likert %>%
       summarize(
-        count = sum(value %in% c(4.0, 4.3, 5.0), na.rm = TRUE),  # Handle NA values
+        count = sum(value %in% c(4.0, 4.3, 5.0), na.rm = TRUE),  # handle NA values
         total = n()
       ) %>%
       mutate(likert = count / total)
@@ -759,7 +758,7 @@ likert <- likert %>%
 
 # update the factor levels to include all values, even those with no observations
 likert <- likert %>%
-  mutate(value = factor(value, levels = c(1, 2, 3, 4, 5)))  # Ensure all levels are included
+  mutate(value = factor(value, levels = c(1, 2, 3, 4, 5)))  # ensure all levels are included
 
 # include zero counts
 likert_summary <- likert %>%
